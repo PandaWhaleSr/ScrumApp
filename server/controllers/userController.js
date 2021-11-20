@@ -4,8 +4,7 @@ const db = require('../models/sqlModels')
 const userController = {};
 
 userController.createUser = async (req, res, next) => {
-  const { firstName, lastName, email } = req.body;
-  const { password } = req.body;
+  const { firstName, lastName, email, password } = req.body;
   // future: salt and bcrypt will reassign password here to new vars to be inserted into params
   /*
   const bcryptpw
@@ -14,14 +13,15 @@ userController.createUser = async (req, res, next) => {
   try {
     const SQL = 
     `INSERT INTO users (firstName, lastName, password, email)
-    VALUES ($1, $2, $3, $4, 5)
+    VALUES ($1, $2, $3, $4)
     `;
     const params = [firstName, lastName, password, email]
     await db.query(SQL, params);
-    return next;
+    return next();
   } catch(err) {
+    console.log(err);
     next({
-      log: 'userController.createUser: ERROR ${err}'
+      log: err
     })
   }
 }

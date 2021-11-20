@@ -6,7 +6,7 @@ const projectController = require('../controllers/projectController');
 const taskController = require('../controllers/taskController');
 
 //routes to users
-router.post('/', userController.createUser, (req,res) => res.status(200).json());
+router.post('/createUser', userController.createUser, (req,res) => res.status(200).json());
 
 
 //routes to projects

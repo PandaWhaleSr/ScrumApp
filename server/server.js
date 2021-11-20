@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 
 //require routers
-const apiRouter = require('./routes/api');
+const userRoutes = require('./routes/userRoutes');
 
 //require port
 const PORT = 3000;
@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended : true}));
 app.use(express.static(path.resolve(__dirname, '../client')));
 
 //define route handlers
-app.use('/api', apiRouter);
+app.use('/api/userRoutes', userRoutes);
 
 //global error handler
 app.use((err, req, res, nest) => {
