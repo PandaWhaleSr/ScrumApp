@@ -1,9 +1,7 @@
 const path = require('path');
-const User = require('../models/sqlModels')
+const db = require('../models/sqlModels')
 
 const userController = {};
-
-
 
 userController.createUser = async (req, res, next) => {
   const { firstName, lastName, email } = req.body;
@@ -19,7 +17,7 @@ userController.createUser = async (req, res, next) => {
     VALUES ($1, $2, $3, $4, 5)
     `;
     const params = [firstName, lastName, password, email]
-    await User.query(SQL, params);
+    await db.query(SQL, params);
     return next;
   } catch(err) {
     next({
