@@ -7,8 +7,8 @@ const pool = new Pool ({
 });
 
 //bcrypt --> does this need to be here as it does when we create a Mongoose schema?
-// const SALT_WORK_FACTOR = 10;
-// const bcrypt = require('bcryptjs');
+const SALT_WORK_FACTOR = 10;
+const bcrypt = require('bcrypt');
 
 module.exports = {
   query: (text, params, callback) => {
