@@ -1,0 +1,51 @@
+{
+  "name": "main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client/index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "webpack",
+    "dev": "concurrently \"webpack serve --open\" \"nodemon server/server.js\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxolee23/main.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/productiveGoblinShark/main/issues"
+  },
+  "homepage": "https://github.com/productiveGoblinShark/main#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "concurrently": "^6.4.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.5.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.4.5",
+    "nodemon": "^2.0.15",
+    "style-loader": "^3.3.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.5.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.0.2",
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.0",
+    "webpack": "^5.64.1"
+  }
+}
