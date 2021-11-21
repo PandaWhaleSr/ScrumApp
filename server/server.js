@@ -1,10 +1,11 @@
 const path = require ('path');
 const express = require('express');
-
+const cookieparse = require('cookie-parser');
 const app = express();
 
 //require routers
 const userRoutes = require('./routes/userRoutes');
+const projectRoutes = require('./routes/projectRoutes');
 
 //require port
 const PORT = 3000;
@@ -12,14 +13,15 @@ const PORT = 3000;
 //parse request body
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
-
+app.use(cookieparse());
 app.use(express.static(path.resolve(__dirname, '../client')));
 
 //define route handlers
 app.use('/api/userRoutes', userRoutes);
+app.use('/api/projectRoutes', projectRoutes);
 
 //global error handler
-app.use((err, req, res, nest) => {
+app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 500,
