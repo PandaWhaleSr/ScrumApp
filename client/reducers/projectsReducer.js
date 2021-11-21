@@ -16,5 +16,49 @@
    projectName: '',
    deadline: '',
    goal: '',
-   projCreationStep: 0
+   projCreationStep: null,
+   createProjectClicked: false,
  };
+
+ const projectsReducer = (state = initialState, action) => {
+   switch(action.types) {
+      case types.ADD_PROJECT : 
+        const createProj = {
+          ...state,
+          createProjectClicked: true,
+          projCreationStep: 1
+        };
+        return createProj
+    
+      case types.PROJECT_NEXT_STEP :
+       const nextStep = {
+         ...state,
+         createProjectClicked: true,
+         projCreationStep: state.projCreationStep + 1
+       };
+       return nextStep;
+
+       case types.PROJECT_PREVIOUS_STEP :
+         const prevStep = {
+           ...state,
+           createProjectClicked: true,
+           projCreationStep: state.projCreationStep - 1
+         }
+         return prevStep;
+
+        //  case types.UPDATE_PROJECT_DEADLINE : 
+        //   const prevStep = {
+            
+        //   }
+
+        default: 
+          return state;
+
+
+
+
+   }
+ }
+
+
+ export default projectsReducer;

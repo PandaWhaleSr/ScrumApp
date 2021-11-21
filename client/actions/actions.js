@@ -17,24 +17,63 @@
  */
 
 import * as types from '../constants/actionTypes';
+//project action creators
+export const toggleSignupActionCreator = () => ({
+  type: types.TOGGLE_SIGNUP
+})
 
 export const addProjectActionCreator = () => ({
-  type: types.ADD_PROJECT,
-  payload: 
+  type: types.ADD_PROJECT
+});
+
+export const projectNextStepActionCreator = (data) => ({
+  type: types.PROJECT_NEXT_STEP,
+  payload: data
+  });
+
+export const projectPreviousStepActionCreator = () => ({
+  type: types.PROJECT_PREVIOUS_STEP
+  });
+
+
+export const updateProjectDeadlineActionCreator = (deadline) => ({
+  type: types.UPDATE_PROJECT_DEADLINE,
+  payload: deadline
+});
+
+export const updateProjectgoalActionCreator = (goal) => ({
+  type: types.UPDATE_PROJECT_GOAL,
+  payload: goal
+});
+
+export const deleteProjectActionCreator = (projectId) => ({
+  type: types.DELETE_PROJECT,
+  payload: projectId
 });
 
 
-export const setNewLocation = (e) => ({
-    type: types.SET_NEW_LOCATION,
-    payload: e.target.value,
-  });
-  
-  projectName: '',
-   deadline: '',
-   goal: '',
+//task action creators
+export const taskNextStepActionCreator = (data) => ({
+  type: types.TASK_NEXT_STEP,
+  payload: data
+});
 
-   newProjectname = action.payload;
-   return {
-       ...state,
-       newProjectname
-   }
+export const taskPreviousStepActionCreator = () => ({
+  type: types.TASK_PREVIOUS_STEP,
+});
+
+export const addTaskActionCreator = (projectId) => ({
+  type: types.ADD_TASK,
+  payload: projectId
+});
+
+export const updateTaskPriorityActionCreator = (taskId) => ({
+  type: types.UPDATE_TASK_PRIORITY,
+  payload: taskId
+});
+
+export const deleteTaskActionCreator = (taskId) => ({
+  type: types.DELETE_TASK,
+  payload: taskId
+});
+
