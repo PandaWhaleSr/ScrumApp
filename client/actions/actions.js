@@ -20,7 +20,6 @@ import * as types from '../constants/actionTypes';
 
 export const addProjectActionCreator = () => ({
   type: types.ADD_PROJECT,
-  payload: 
 });
 
 
@@ -28,13 +27,3 @@ export const setNewLocation = (e) => ({
     type: types.SET_NEW_LOCATION,
     payload: e.target.value,
   });
-  
-  projectName: '',
-   deadline: '',
-   goal: '',
-
-   newProjectname = action.payload;
-   return {
-       ...state,
-       newProjectname
-   }
