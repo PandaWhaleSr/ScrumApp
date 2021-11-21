@@ -17,10 +17,62 @@
  */
 
 import * as types from '../constants/actionTypes';
-//project action creators
+
 export const toggleSignupActionCreator = () => ({
   type: types.TOGGLE_SIGNUP
 })
+
+export const firstNameInputActionCreator = (input) => ({
+  type: types.FIRST_NAME_INPUT,
+  payload: input
+});
+
+export const lastNameInputActionCreator = (input) => ({
+  type: types.LAST_NAME_INPUT,
+  payload: input
+})
+
+export const emailInputActionCreator = (input) => ({
+  type: types.EMAIL_INPUT,
+  payload: input
+})
+
+export const passwordInputActionCreator = (input) => ({
+  type: types.PASSWORD_INPUT,
+  payload: input
+})
+
+
+export const submitSignupActionCreator = (user) => {
+  return (dispatch) => {
+    fetch('/api/userRoutes/createUser', {
+      method: "POST",
+      headers: 'application/json',
+      body: JSON.stringify({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        password: user.password
+      })
+    }).then(res => {
+      console.log(res);
+      dispatch({type: SUBMIT_SIGNUP})
+    })
+    .catch(err => console.log(err))
+  }
+}
+
+
+
+
+
+
+
+
+//project action creators
+
+
+
 
 export const addProjectActionCreator = () => ({
   type: types.ADD_PROJECT

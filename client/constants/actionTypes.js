@@ -8,6 +8,18 @@
  */
 
 export const TOGGLE_SIGNUP = 'TOGGLE_SIGNUP';
+export const FIRST_NAME_INPUT = 'FIRST_NAME_INPUT';
+export const LAST_NAME_INPUT = 'LAST_NAME_INPUT';
+export const EMAIL_INPUT = 'EMAIL_INPUT';
+export const PASSWORD_INPUT = 'PASSWORD_INPUT';
+export const SUBMIT_SIGNUP = 'SUBMIT_SIGNUP';
+
+
+
+
+
+
+
 export const UPDATE_DASHBOARD = 'UPDATE_DASHBOARD'; //fired when user logs in, or finishes creating, updating, or deleting a project or task.
 
 export const PROJECT_NEXT_STEP = 'PROJECT_NEXT_STEP'; //for project creation process
