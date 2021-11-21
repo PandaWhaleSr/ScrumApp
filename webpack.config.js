@@ -25,7 +25,7 @@ module.exports = {
             include: path.resolve(__dirname, 'client'),
             use: [
                 MiniCssExtractPlugin.loader,
-                "css-loader", "postcss-loader",
+                "css-loader"
                 ],
         }]
     },
@@ -35,9 +35,9 @@ module.exports = {
         },
         historyApiFallback: true,
         port: 8080,
-        // proxy: {
-        //     '/api/': 'http://localhost:3000'
-        // }
+        proxy: {
+            '/api/': 'http://localhost:3000'
+        }
     },
 
     plugins: [new HtmlWebpackPlugin({
