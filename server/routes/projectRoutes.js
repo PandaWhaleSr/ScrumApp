@@ -22,5 +22,8 @@ router.post('/newProject', verifyToken, projectController.createProject, project
 //update projects for user
 
 //delete projects for user
+router.delete('/deleteProject/:projectId', verifyToken, projectController.deleteProject, projectController.viewProjects, (req, res) => {
+  return res.status(200).json(res.locals.projects)
+})
 
 module.exports = router;

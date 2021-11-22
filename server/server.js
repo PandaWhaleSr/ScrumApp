@@ -6,7 +6,7 @@ const app = express();
 //require routers
 const userRoutes = require('./routes/userRoutes');
 const projectRoutes = require('./routes/projectRoutes');
-const taskRoutes = require('./routes/userRoutes');
+const taskRoutes = require('./routes/taskRoutes');
 
 //require port
 const PORT = 3000;

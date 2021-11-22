@@ -34,4 +34,17 @@ projectController.createProject = async (req, res, next) => {
 
 }
 
+projectController.deleteProject = async (req, res, next) => {
+  const {projectId} = req.params;
+  try {
+    const SQL = `DELETE from tasks WHERE projectId = ${projectId}
+    DELETE from projects WHERE projectId = ${projectId}
+    `;
+    await db.query(SQL);
+    return next()
+  } catch(error) {
+    return next({log: error})
+  }
+}
+
 module.exports = projectController;
