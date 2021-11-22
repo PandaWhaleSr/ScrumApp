@@ -5,7 +5,8 @@ const initialState = {
     firstName: '',
     lastName: '',
     email: '',
-    password: ''
+    password: '',
+    isLoggedIn: false
 };
 
 const authReducer = (state = initialState, action) => {
@@ -54,10 +55,21 @@ const authReducer = (state = initialState, action) => {
                 firstName: '',
                 lastName: '',
                 email: '',
-                password: ''
+                password: '',
+                isLoggedIn: true
             }
 
             return updates;
+
+        case types.SUBMIT_LOGIN :
+            const updateLogin = {
+                ...state,
+                email: '',
+                password: '',
+                isLoggedIn: true
+            }
+
+            return updateLogin;
         default:
             return state;
     }

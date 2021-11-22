@@ -5,7 +5,7 @@ import {toggleSignupActionCreator} from '../actions/actions';
 const NavBar = () => {
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth);
-    console.log(auth);
+    // console.log(auth);
     const toggleSignup = () => {
         dispatch(toggleSignupActionCreator())
     }
@@ -19,12 +19,8 @@ const NavBar = () => {
         {/* Dashboard or nothing */}
 
             </li>
-            <li>
-        {/* Log in/Log out */}
-                Log in
-            </li>
-            {auth.showSignup === true && <button onClick={toggleSignup}>Signup</button>}
-           {auth.showSignup === false && <button onClick={toggleSignup}>Login</button>}
+            {auth.showSignup === false && <button onClick={toggleSignup}>Signup</button>}
+           {auth.showSignup === true && <button onClick={toggleSignup}>Login</button>}
             </ul>
         </div>
     )

@@ -21,7 +21,7 @@ userController.createUser = async (req, res, next) => {
     `; //returning * is lagging sync of created users
     const params = [firstName, lastName, hashPassword, email]
     const results = await db.query(SQL, params);
-    console.log(results);
+    // console.log(results);
     const token = jwt.sign({user: results.rows[0].userid}, "shhh", {expiresIn: "1hr"});
 
     res.cookie("token", token, {

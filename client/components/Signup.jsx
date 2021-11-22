@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {firstNameInputActionCreator, lastNameInputActionCreator, emailInputActionCreator, passwordInputActionCreator, submitSignupActionCreator} from '../actions/actions'
-
+import {useNavigate} from 'react-router';
 
 function Signup() {
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth);
+    const navigate = useNavigate();
     // console.log(auth)
 
     const signup = (e) => {
@@ -17,6 +18,7 @@ function Signup() {
             password: auth.password
         }
         dispatch(submitSignupActionCreator(user));
+        navigate('/dashboard')
     }
     return (
         <div>
