@@ -5,8 +5,8 @@ const ProjectName = (props) => {
     return (
       <div>
         <h4>What is your project name?</h4>
-        <input value={props.newLocation} type="text" onChange={props.setNewLocation} />
-        <button onClick={props.addMarket}>NEXT</button>
+        <input value={} type="text" onChange={props.setNewLocation} />
+        <button onClick={}>NEXT</button>
       </div>
     );
   };

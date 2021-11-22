@@ -44,10 +44,13 @@ export const passwordInputActionCreator = (input) => ({
 
 
 export const submitSignupActionCreator = (user) => {
+  console.log(user)
   return (dispatch) => {
     fetch('/api/userRoutes/createUser', {
       method: "POST",
-      headers: 'application/json',
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         firstName: user.firstName,
         lastName: user.lastName,
@@ -56,9 +59,27 @@ export const submitSignupActionCreator = (user) => {
       })
     }).then(res => {
       console.log(res);
-      dispatch({type: SUBMIT_SIGNUP})
+      dispatch({type: types.SUBMIT_SIGNUP})
     })
     .catch(err => console.log(err))
+  }
+}
+
+export const submitLoginActionCreator = (user) => {
+  return (dispatch) => {
+    fetch('/api/userRoutes/verifyUser', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: user.email,
+        password: user.password
+      })
+    }).then(res => {
+      console.log(res);
+      dispatch({type: types.SUBMIT_LOGIN})
+    }).catch(err => console.log(err))
   }
 }
 

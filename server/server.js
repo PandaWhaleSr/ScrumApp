@@ -22,6 +22,8 @@ app.use('/api/userRoutes', userRoutes);
 app.use('/api/projectRoutes', projectRoutes);
 app.use('/api/taskRoutes', taskRoutes);
 
+// app.get('/build', express.static(path.join(__dirname, '../build/')));
+
 //global error handler
 app.use((err, req, res, next) => {
   const defaultErr = {
