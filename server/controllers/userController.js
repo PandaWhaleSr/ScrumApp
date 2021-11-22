@@ -39,7 +39,6 @@ userController.createUser = async (req, res, next) => {
 userController.verifyUser = async(req, res, next) => {
   const { email, password } = req.body;
   try{
-
     const SQL = `SELECT * FROM users WHERE email = '${email}'`;
 
     const result = await db.query(SQL);

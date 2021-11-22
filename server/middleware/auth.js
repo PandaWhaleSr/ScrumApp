@@ -6,12 +6,15 @@ const auth = {};
 
 auth.verifyToken = (req, res, next) => {
 
-  if (!req.cookies.token) {
+  const token = req.cookies.token
+  if (!token) {
     return next('unauthorized')
   }
-  const verify = jwt.verify(req.cookies.token, 'shhh');
+  const verify = jwt.verify(token, 'shhh');
+  // console.log(verify)
   res.locals.user = verify.user;
-  console.log(res.locals.user); //19
+  // req.user = verify.user
+  // console.log(res.locals.user)
   return next();
   // return next({log: err});
 } 
