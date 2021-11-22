@@ -13,6 +13,7 @@
 
  const initialState = {
    projectList: [],
+   projectsLoaded: false,
    projectName: '',
    deadline: '',
    goal: '',
@@ -22,6 +23,16 @@
 
  const projectsReducer = (state = initialState, action) => {
    switch(action.types) {
+
+    case types.UPDATE_DASHBOARD :
+      const dashboard = {
+        ...state,
+        projectList: [action.payload],
+        projectsLoaded: true
+      };
+
+      return dashboard;
+
       case types.ADD_PROJECT : 
         const createProj = {
           ...state,
