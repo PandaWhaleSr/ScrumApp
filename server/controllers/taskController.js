@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken')
 const taskController = {};
 
 taskController.createTask = async (req, res, next) => {
+  console.log('hello')
   const { description, status, priority, points, projectId } = req.body
   try {
     const SQL = `INSERT into tasks (description, status, priorities, points, projectId) 
@@ -16,13 +17,12 @@ taskController.createTask = async (req, res, next) => {
   } catch (error) {
     return next({log: err})    
   }
-  return next();
 }
 
 taskController.viewTasks = async (req, res, next) => {
-  console.log('Entering inside view Task controller');
+  const { projectId } = req.body;
   try {
-    const SQL = `SELECT * from tasks where projectId =1`;   
+    const SQL = `SELECT * from tasks where projectId = ${projectId}`;   
     const results = await db.query(SQL);
     console.log("results contents", results);
     res.locals.tasks = results.rows;
@@ -30,8 +30,17 @@ taskController.viewTasks = async (req, res, next) => {
   } catch (error) {
     return next({log: err})    
   }
-  return next();
+}
 
+taskController.deleteTask = async(req, res, next) => {
+  const {taskid} = req.params
+  try {
+    const SQL = `DELETE FROM tasks WHERE taskid = ${taskid}`;
+    await db.query(SQL);
+    return next();
+  } catch (error) {
+    return next({log: err})  
+  }
 }
 
 module.exports = taskController;

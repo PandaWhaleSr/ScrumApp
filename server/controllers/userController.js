@@ -21,7 +21,7 @@ userController.createUser = async (req, res, next) => {
     `; //returning * is lagging sync of created users
     const params = [firstName, lastName, hashPassword, email]
     const results = await db.query(SQL, params);
-    // console.log(results);
+
     const token = jwt.sign({user: results.rows[0].userid}, "shhh", {expiresIn: "1hr"});
 
     res.cookie("token", token, {
@@ -39,11 +39,11 @@ userController.createUser = async (req, res, next) => {
 userController.verifyUser = async(req, res, next) => {
   const { email, password } = req.body;
   try{
-    // console.log(email)
-    const SQL = `SELECT password FROM users WHERE email = '${email}'`;
+
+    const SQL = `SELECT * FROM users WHERE email = '${email}'`;
 
     const result = await db.query(SQL);
-    // console.log(result);
+
     const compare = bcrypt.compare(password, result.rows[0].password) 
     if (!compare) {
       return next({log: 'Incorrect Password'});
