@@ -92,61 +92,73 @@ export const submitLoginActionCreator = (user) => {
 
 //project action creators
 
+export const updateDashboardActionCreator = () => {
+  return (dispatch) => {
+    fetch('/api/projectRoutes/projects')
+    .then((res) => res.json())
+    .then(data => {
+      console.log(data)
+      dispatch({type: types.UPDATE_DASHBOARD, payload: data})
+    })
+    .catch(err => console.log(err))
+  }
+}
 
 
 
-export const addProjectActionCreator = () => ({
-  type: types.ADD_PROJECT
-});
 
-export const projectNextStepActionCreator = (data) => ({
-  type: types.PROJECT_NEXT_STEP,
-  payload: data
-  });
+// export const addProjectActionCreator = () => ({
+//   type: types.ADD_PROJECT
+// });
 
-export const projectPreviousStepActionCreator = () => ({
-  type: types.PROJECT_PREVIOUS_STEP
-  });
+// export const projectNextStepActionCreator = (data) => ({
+//   type: types.PROJECT_NEXT_STEP,
+//   payload: data
+//   });
 
-
-export const updateProjectDeadlineActionCreator = (deadline) => ({
-  type: types.UPDATE_PROJECT_DEADLINE,
-  payload: deadline
-});
-
-export const updateProjectgoalActionCreator = (goal) => ({
-  type: types.UPDATE_PROJECT_GOAL,
-  payload: goal
-});
-
-export const deleteProjectActionCreator = (projectId) => ({
-  type: types.DELETE_PROJECT,
-  payload: projectId
-});
+// export const projectPreviousStepActionCreator = () => ({
+//   type: types.PROJECT_PREVIOUS_STEP
+//   });
 
 
-//task action creators
-export const taskNextStepActionCreator = (data) => ({
-  type: types.TASK_NEXT_STEP,
-  payload: data
-});
+// export const updateProjectDeadlineActionCreator = (deadline) => ({
+//   type: types.UPDATE_PROJECT_DEADLINE,
+//   payload: deadline
+// });
 
-export const taskPreviousStepActionCreator = () => ({
-  type: types.TASK_PREVIOUS_STEP,
-});
+// export const updateProjectgoalActionCreator = (goal) => ({
+//   type: types.UPDATE_PROJECT_GOAL,
+//   payload: goal
+// });
 
-export const addTaskActionCreator = (projectId) => ({
-  type: types.ADD_TASK,
-  payload: projectId
-});
+// export const deleteProjectActionCreator = (projectId) => ({
+//   type: types.DELETE_PROJECT,
+//   payload: projectId
+// });
 
-export const updateTaskPriorityActionCreator = (taskId) => ({
-  type: types.UPDATE_TASK_PRIORITY,
-  payload: taskId
-});
 
-export const deleteTaskActionCreator = (taskId) => ({
-  type: types.DELETE_TASK,
-  payload: taskId
-});
+// //task action creators
+// export const taskNextStepActionCreator = (data) => ({
+//   type: types.TASK_NEXT_STEP,
+//   payload: data
+// });
+
+// export const taskPreviousStepActionCreator = () => ({
+//   type: types.TASK_PREVIOUS_STEP,
+// });
+
+// export const addTaskActionCreator = (projectId) => ({
+//   type: types.ADD_TASK,
+//   payload: projectId
+// });
+
+// export const updateTaskPriorityActionCreator = (taskId) => ({
+//   type: types.UPDATE_TASK_PRIORITY,
+//   payload: taskId
+// });
+
+// export const deleteTaskActionCreator = (taskId) => ({
+//   type: types.DELETE_TASK,
+//   payload: taskId
+// });
 
