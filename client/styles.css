@@ -4,5 +4,30 @@ ul {
   list-style-type: none;
   justify-content: space-between;
   padding-bottom: 5px;
-  border-bottom: 1px solid;
 }
+body {
+  background-color: rgb(92, 216, 92);
+  font-family: 'Press Start 2P', cursive;
+  background-image: url("assets/goblinredux.gif")
+}
+form{
+  display: flex;
+  flex-direction: column;
+}
+.nav {
+  background-color: lightgoldenrodyellow;
+  padding: 1%;
+}
+input, form button {
+  margin: 0.5%;
+  width: 30%;
+}
+input[type=button]:hover{
+  background-color:lightslategray;
+}
+input[type=button]:active{
+  background-color: gray;
+}
+ 
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');

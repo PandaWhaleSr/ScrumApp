@@ -34,7 +34,6 @@ function Signup() {
              <input type="password" onChange={(e) => dispatch(passwordInputActionCreator(e.target.value))} />
             <button type="submit">Sign up</button>
           </form>
-            
         </div>
     )
 };
