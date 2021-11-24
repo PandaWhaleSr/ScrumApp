@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import NavBar from ".././components/NavBar.jsx";
 import { updateDashboardActionCreator } from "../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 

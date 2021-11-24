@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   firstNameInputActionCreator,
@@ -13,7 +13,6 @@ function Signup() {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
-  // console.log(auth)
 
   const signup = (e) => {
     e.preventDefault();

@@ -8,7 +8,6 @@ ul {
 body {
   background-color: rgb(92, 216, 92);
   font-family: "Press Start 2P", cursive;
-  background-image: url("assets/goblinredux.gif");
 }
 form {
   display: flex;
