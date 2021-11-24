@@ -23,6 +23,7 @@
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
     "babel-loader": "^8.2.3",
+    "babel-plugin-styled-components": "^2.0.1",
     "bcrypt": "^5.0.1",
     "concurrently": "^6.4.0",
     "cross-env": "^7.0.3",
@@ -46,6 +47,10 @@
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.0",
+    "styled-components": "^5.3.3",
     "webpack": "^5.64.1"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }
