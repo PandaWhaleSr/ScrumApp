@@ -1,14 +1,29 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 
-const ProjectName = (props) => {
+
+
+export default function ProjectCreator() {
+  //const navigate = useNavigate();
+
+  const submit = (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      useNavigate('/dashboard');
+      };
     
-    return (
-      <div>
-        <h4>What is your project name?</h4>
-        <input value={} type="text" onChange={props.setNewLocation} />
-        <button onClick={}>NEXT</button>
-      </div>
-    );
-  };
-  
-  export default ProjectName;
+  return (
+    <div>
+      <h1>Project Creator</h1>
+      <form onSubmit={submit}>
+        <label>Project Name:</label>
+          <input type="text" name="projectName" />
+        <label>Goal:</label>
+          <input type="text" name="goal"  />
+        <label>Deadline</label>
+          <input type="date" name="deadline"  />
+          <input type="submit" value="Submit" />
+      </form>
+    </div>
+    );}  
