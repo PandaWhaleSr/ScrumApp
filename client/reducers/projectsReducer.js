@@ -9,67 +9,61 @@
  * ************************************
  */
 
- import * as types from '../constants/actionTypes';
+import * as types from "../constants/actionTypes";
 
- const initialState = {
-   projectList: [],
-   projectsLoaded: false,
-   projectName: '',
-   deadline: '',
-   goal: '',
-   projCreationStep: null,
-   createProjectClicked: false,
- };
+const initialState = {
+  projectList: [],
+  projectsLoaded: false,
+  projectName: "",
+  deadline: "",
+  goal: "",
+  projCreationStep: null,
+  createProjectClicked: false,
+};
 
- const projectsReducer = (state = initialState, action) => {
-   switch(action.types) {
-
-    case types.UPDATE_DASHBOARD :
+const projectsReducer = (state = initialState, action) => {
+  switch (action.types) {
+    case types.UPDATE_DASHBOARD:
       const dashboard = {
         ...state,
         projectList: [action.payload],
-        projectsLoaded: true
+        projectsLoaded: true,
       };
 
       return dashboard;
 
-      case types.ADD_PROJECT : 
-        const createProj = {
-          ...state,
-          createProjectClicked: true,
-          projCreationStep: 1
-        };
-        return createProj
-    
-      case types.PROJECT_NEXT_STEP :
-       const nextStep = {
-         ...state,
-         createProjectClicked: true,
-         projCreationStep: state.projCreationStep + 1
-       };
-       return nextStep;
+    case types.ADD_PROJECT:
+      const createProj = {
+        ...state,
+        createProjectClicked: true,
+        projCreationStep: 1,
+      };
+      return createProj;
 
-       case types.PROJECT_PREVIOUS_STEP :
-         const prevStep = {
-           ...state,
-           createProjectClicked: true,
-           projCreationStep: state.projCreationStep - 1
-         }
-         return prevStep;
+    case types.PROJECT_NEXT_STEP:
+      const nextStep = {
+        ...state,
+        createProjectClicked: true,
+        projCreationStep: state.projCreationStep + 1,
+      };
+      return nextStep;
 
-        //  case types.UPDATE_PROJECT_DEADLINE : 
-        //   const prevStep = {
-            
-        //   }
+    case types.PROJECT_PREVIOUS_STEP:
+      const prevStep = {
+        ...state,
+        createProjectClicked: true,
+        projCreationStep: state.projCreationStep - 1,
+      };
+      return prevStep;
 
-        default: 
-          return state;
+    //  case types.UPDATE_PROJECT_DEADLINE :
+    //   const prevStep = {
 
+    //   }
 
+    default:
+      return state;
+  }
+};
 
-
-   }
- }
-
-
- export default projectsReducer;
+export default projectsReducer;

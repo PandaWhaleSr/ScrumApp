@@ -1,7 +1,7 @@
-const path = require('path');
-const db = require('../models/sqlModels')
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken')
+const path = require("path");
+const db = require("../models/sqlModels");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const userController = {};
 
@@ -14,52 +14,55 @@ userController.createUser = async (req, res, next) => {
   console.log(email);
   try {
     const hashPassword = bcrypt.hashSync(password, 10);
-    const SQL = 
-    `INSERT INTO users (firstName, lastName, password, email)
+    const SQL = `INSERT INTO users (firstName, lastName, password, email)
     VALUES ($1, $2, $3, $4)
     RETURNING *
     `; //returning * is lagging sync of created users
-    const params = [firstName, lastName, hashPassword, email]
+    const params = [firstName, lastName, hashPassword, email];
     const results = await db.query(SQL, params);
 
-    const token = jwt.sign({user: results.rows[0].userid}, "shhh", {expiresIn: "1hr"});
+    const token = jwt.sign({ user: results.rows[0].userid }, "shhh", {
+      expiresIn: "1hr",
+    });
 
     res.cookie("token", token, {
-      httpOnly: true
-    })
+      httpOnly: true,
+    });
     return next();
-  } catch(err) {
+  } catch (err) {
     console.log(err);
     next({
-      log: err
-    })
+      log: err,
+    });
   }
-}
+};
 
-userController.verifyUser = async(req, res, next) => {
+userController.verifyUser = async (req, res, next) => {
   const { email, password } = req.body;
-  try{
+  try {
     const SQL = `SELECT * FROM users WHERE email = '${email}'`;
 
     const result = await db.query(SQL);
 
-    const compare = bcrypt.compare(password, result.rows[0].password) 
+    const compare = bcrypt.compare(password, result.rows[0].password);
     if (!compare) {
-      return next({log: 'Incorrect Password'});
+      return next({ log: "Incorrect Password" });
     }
-    // else if password is verified, create token  
-    
-    const token = jwt.sign({user: result.rows[0].userid}, "shhh", {expiresIn: "1hr"});
+    // else if password is verified, create token
+
+    const token = jwt.sign({ user: result.rows[0].userid }, "shhh", {
+      expiresIn: "1hr",
+    });
 
     res.cookie("token", token, {
-      httpOnly: true
-    })
+      httpOnly: true,
+    });
     return next();
-  }catch (err) {
+  } catch (err) {
     console.log(err);
     next({
-      log: err
-    })
+      log: err,
+    });
   }
-}
+};
 module.exports = userController;

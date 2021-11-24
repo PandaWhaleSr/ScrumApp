@@ -3,50 +3,49 @@
  * @author Phillip Yoo & Matthew Miller
  * @date 11/20/2021
  * @description Action Creators
- * 
- * 
+ *
+ *
  */
 
- /* 
- export const ADD_PROJECT = 'ADD_PROJECT';
- export const UPDATE_PROJECT = 'UPDATE_PROJECT'
- export const DELETE_PROJECT = 'DELETE_PROJECT';
- export const ADD_TASK = 'ADD_TASK';
- export const UPDATE_TASK = 'UPDATE_TASK';
- export const DELETE_TASK = 'DELETE_TASK';
+/* 
+  export const ADD_PROJECT = 'ADD_PROJECT';
+  export const UPDATE_PROJECT = 'UPDATE_PROJECT'
+  export const DELETE_PROJECT = 'DELETE_PROJECT';
+  export const ADD_TASK = 'ADD_TASK';
+  export const UPDATE_TASK = 'UPDATE_TASK';
+  export const DELETE_TASK = 'DELETE_TASK';
  */
 
-import * as types from '../constants/actionTypes';
+import * as types from "../constants/actionTypes";
 
 export const toggleSignupActionCreator = () => ({
-  type: types.TOGGLE_SIGNUP
-})
+  type: types.TOGGLE_SIGNUP,
+});
 
 export const firstNameInputActionCreator = (input) => ({
   type: types.FIRST_NAME_INPUT,
-  payload: input
+  payload: input,
 });
 
 export const lastNameInputActionCreator = (input) => ({
   type: types.LAST_NAME_INPUT,
-  payload: input
-})
+  payload: input,
+});
 
 export const emailInputActionCreator = (input) => ({
   type: types.EMAIL_INPUT,
-  payload: input
-})
+  payload: input,
+});
 
 export const passwordInputActionCreator = (input) => ({
   type: types.PASSWORD_INPUT,
-  payload: input
-})
-
+  payload: input,
+});
 
 export const submitSignupActionCreator = (user) => {
-  console.log(user)
+  console.log(user);
   return (dispatch) => {
-    fetch('/api/userRoutes/createUser', {
+    fetch("/api/userRoutes/createUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,57 +54,49 @@ export const submitSignupActionCreator = (user) => {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        password: user.password
-      })
-    }).then(res => {
-      console.log(res);
-      dispatch({type: types.SUBMIT_SIGNUP})
+        password: user.password,
+      }),
     })
-    .catch(err => console.log(err))
-  }
-}
+      .then((res) => {
+        console.log(res);
+        dispatch({ type: types.SUBMIT_SIGNUP });
+      })
+      .catch((err) => console.log(err));
+  };
+};
 
 export const submitLoginActionCreator = (user) => {
   return (dispatch) => {
-    fetch('/api/userRoutes/verifyUser', {
+    fetch("/api/userRoutes/verifyUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: user.email,
-        password: user.password
+        password: user.password,
+      }),
+    })
+      .then((res) => {
+        console.log(res);
+        dispatch({ type: types.SUBMIT_LOGIN });
       })
-    }).then(res => {
-      console.log(res);
-      dispatch({type: types.SUBMIT_LOGIN})
-    }).catch(err => console.log(err))
-  }
-}
-
-
-
-
-
-
-
+      .catch((err) => console.log(err));
+  };
+};
 
 //project action creators
-
 export const updateDashboardActionCreator = () => {
   return (dispatch) => {
-    fetch('/api/projectRoutes/projects')
-    .then((res) => res.json())
-    .then(data => {
-      console.log(data)
-      dispatch({type: types.UPDATE_DASHBOARD, payload: data})
-    })
-    .catch(err => console.log(err))
-  }
-}
-
-
-
+    fetch("/api/projectRoutes/projects")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        dispatch({ type: types.UPDATE_DASHBOARD, payload: data });
+      })
+      .catch((err) => console.log(err));
+  };
+};
 
 // export const addProjectActionCreator = () => ({
 //   type: types.ADD_PROJECT
@@ -119,7 +110,6 @@ export const updateDashboardActionCreator = () => {
 // export const projectPreviousStepActionCreator = () => ({
 //   type: types.PROJECT_PREVIOUS_STEP
 //   });
-
 
 // export const updateProjectDeadlineActionCreator = (deadline) => ({
 //   type: types.UPDATE_PROJECT_DEADLINE,
@@ -135,7 +125,6 @@ export const updateDashboardActionCreator = () => {
 //   type: types.DELETE_PROJECT,
 //   payload: projectId
 // });
-
 
 // //task action creators
 // export const taskNextStepActionCreator = (data) => ({
@@ -161,4 +150,3 @@ export const updateDashboardActionCreator = () => {
 //   type: types.DELETE_TASK,
 //   payload: taskId
 // });
-
