@@ -19,7 +19,7 @@ form {
 }
 input,
 form button {
-  margin: 0.5%;
+  margin: auto;
   width: 30%;
 }
 input[type="button"]:hover {
