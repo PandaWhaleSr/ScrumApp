@@ -1,15 +1,20 @@
 import React, { useEffect } from "react";
 import { updateDashboardActionCreator } from "../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
+import NavBar from ".././components/NavBar.jsx";
+import ProjectCreator from "../components/ProjectCreator.jsx";
+import { useNavigate } from "react-router";
 
 function Dashboard() {
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
   const projectState = useSelector((state) => state.projects);
 
-  useEffect(() => {
-    dispatch(updateDashboardActionCreator());
-  }, [projectState.projectsLoaded]);
+  // console.log(projectState.projectList)
+
+  const goToProj = () => {
+    useNavigate("/ProjectCreator");
+  };
 
   return (
     <div>
@@ -20,7 +25,10 @@ function Dashboard() {
           projectState.projectList.length === 0 && <h1>No projects yet</h1>}
         {projectState.projectsLoaded === true &&
           projectState.projectList.length > 0 && <h1>Projects!</h1>}
-        {/* Projects go here */}
+
+        <button type="submit" onSubmit={() => goToProj}>
+          projectCreator
+        </button>
       </div>
     </div>
   );

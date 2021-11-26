@@ -21,11 +21,11 @@ projectController.viewProjects = async (req, res, next) => {
 };
 
 projectController.createProject = async (req, res, next) => {
-  const { description, deadline } = req.body;
+  const { description, deadline, title, goal } = req.body;
   try {
-    const SQL = `INSERT into projects (description, deadline, userId) 
-    VALUES ($1, $2, $3)`;
-    const params = [description, deadline, res.locals.user];
+    const SQL = `INSERT into projects (description, deadline, userId, title, goal)
+    VALUES ($1, $2, $3, $4, $5)`;
+    const params = [description, deadline, res.locals.user, title, goal]; //res.locals.user
     const results = await db.query(SQL, params);
     return next();
   } catch (error) {

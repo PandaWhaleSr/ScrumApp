@@ -22,8 +22,13 @@ form button {
   margin: auto;
   margin-top: 5px;
   margin-bottom: 5px;
-  width: 30%;
 }
+
+/* input, form button {
+  margin: 0.5%;
+  width: 30%;
+} */
+
 input[type="button"]:hover {
   background-color: lightslategray;
 }
