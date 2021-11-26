@@ -22,8 +22,8 @@ function App() {
                 {/* <Route exact path="/dashboard" element={<Dashboard />}></Route> */}
                 {auth.showSignup === true && <Route exact path="/" element={<Signup />}></Route>}
                 {auth.showSignup === false && <Route exact path="/" element={<Login />}></Route>}
-                {/* <Route exact path="/dashboard" element={<Dashboard />}></Route> */}
-                <Route exact path="/projectCreator" element={<ProjectCreator/>}></Route>
+                 <Route exact path="/dashboard" element={<Dashboard />}></Route> 
+                 <Route exact path="/ProjectCreator" element={<ProjectCreator/>}></Route>
             </Routes>
             </Router>
         </div>

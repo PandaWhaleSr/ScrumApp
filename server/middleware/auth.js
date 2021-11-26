@@ -11,8 +11,10 @@ auth.verifyToken = (req, res, next) => {
     return next('unauthorized')
   }
   const verify = jwt.verify(token, 'shhh');
-  // console.log(verify)
+  console.log(verify);
   res.locals.user = verify.user;
+  console.log("res dot locals dot user:", res.locals.user);
+
   // req.user = verify.user
   // console.log(res.locals.user)
   return next();
