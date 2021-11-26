@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Dashboard from './containers/Dashboard.jsx'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx';
+import ProjectCard from './components/ProjectCard.jsx';
+import {Project} from './components/Project.jsx';
 
 import {useSelector} from 'react-redux';
 
@@ -22,6 +24,7 @@ function App() {
                 {auth.showSignup === true && <Route exact path="/" element={<Signup />}></Route>}
                 {auth.showSignup === false && <Route exact path="/" element={<Login />}></Route>}
                 <Route exact path="/dashboard" element={<Dashboard />}></Route>
+                <Route exact path="/project" element={<Project />}></Route>
             </Routes>
             </Router>
         </div>

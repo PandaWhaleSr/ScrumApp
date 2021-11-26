@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import NavBar from '.././components/NavBar.jsx';
 import {updateDashboardActionCreator} from '../actions/actions';
 import {useDispatch, useSelector} from 'react-redux';
-
+import ProjectCard from '../components/ProjectCard.jsx';
 
 function Dashboard() {
     const dispatch = useDispatch();
@@ -19,17 +19,17 @@ function Dashboard() {
     // console.log(projectState.projectList)
 
     return(
-    <div>
-        <button>Create Project</button>
         <div>
-            {projectState.projectsLoaded === false && <p>Loading...</p>}
-            {projectState.projectsLoaded === true && projectState.projectList.length === 0 && <h1>No projects yet</h1> }
-            {projectState.projectsLoaded === true && projectState.projectList.length > 0 && <h1>Projects!</h1> }
-            {/* Projects go here */}
-         </div>
-    </div>
+            <button>Create Project</button>
+            <div>
+                {projectState.projectsLoaded === false && <p>Loading...</p>}
+                {projectState.projectsLoaded === true && projectState.projectList.length === 0 && <h1>No projects yet</h1> }
+                {projectState.projectsLoaded === true && projectState.projectList.length > 0 && <h1>Projects!</h1> }
+                <Project /> {/* Project page of each project card */}
+                <ProjectCard />
+            </div>
+        </div>
     )
-  
 }
 
 export default Dashboard
