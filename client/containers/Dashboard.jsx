@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
-import { updateDashboardActionCreator } from "../actions/actions";
-import { useDispatch, useSelector } from "react-redux";
-import NavBar from ".././components/NavBar.jsx";
+import React, {useEffect} from 'react';
+import NavBar from '.././components/NavBar.jsx';
+import {updateDashboardActionCreator} from '../actions/actions';
+import {useDispatch, useSelector} from 'react-redux';
 import ProjectCreator from "../components/ProjectCreator.jsx";
+import ProjectCard from '../components/ProjectCard.jsx';
 import { useNavigate } from "react-router";
 
 function Dashboard() {
