@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Dashboard from './containers/Dashboard.jsx'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx';
+import ProjectCreator from './components/ProjectCreator.jsx';
 
 import {useSelector} from 'react-redux';
 
@@ -21,7 +22,8 @@ function App() {
                 {/* <Route exact path="/dashboard" element={<Dashboard />}></Route> */}
                 {auth.showSignup === true && <Route exact path="/" element={<Signup />}></Route>}
                 {auth.showSignup === false && <Route exact path="/" element={<Login />}></Route>}
-                <Route exact path="/dashboard" element={<Dashboard />}></Route>
+                 <Route exact path="/dashboard" element={<Dashboard />}></Route> 
+                 <Route exact path="/ProjectCreator" element={<ProjectCreator/>}></Route>
             </Routes>
             </Router>
         </div>

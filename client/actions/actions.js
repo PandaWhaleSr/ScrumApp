@@ -87,9 +87,6 @@ export const submitLoginActionCreator = (user) => {
 
 
 
-
-
-
 //project action creators
 
 export const updateDashboardActionCreator = () => {
@@ -106,21 +103,30 @@ export const updateDashboardActionCreator = () => {
 
 
 
+//params = [description, deadline, res.locals.user];  
 
-// export const addProjectActionCreator = () => ({
-//   type: types.ADD_PROJECT
-// });
-
-// export const projectNextStepActionCreator = (data) => ({
-//   type: types.PROJECT_NEXT_STEP,
-//   payload: data
-//   });
-
-// export const projectPreviousStepActionCreator = () => ({
-//   type: types.PROJECT_PREVIOUS_STEP
-//   });
-
-
+export const addProjectActionCreator = (project) => {
+  return (dispatch) => {
+    fetch('/api/projectRoutes/newProject', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+      
+      description: project.description,
+      deadline: project.deadline,
+      userid: 54, // a@a.com a a
+      title: project.title,
+      goal:   project.goal                    //[description, deadline, res.locals.user]; 
+      })
+    }).then(res => {
+      console.log(res);
+      dispatch({type: types.ADD_PROJECT})
+    }).catch(err => console.log(err));
+  }
+}
+/*
 // export const updateProjectDeadlineActionCreator = (deadline) => ({
 //   type: types.UPDATE_PROJECT_DEADLINE,
 //   payload: deadline
@@ -135,6 +141,17 @@ export const updateDashboardActionCreator = () => {
 //   type: types.DELETE_PROJECT,
 //   payload: projectId
 // });
+
+
+
+// export const projectNextStepActionCreator = (data) => ({
+//   type: types.PROJECT_NEXT_STEP,
+//   payload: data
+//   });
+
+// export const projectPreviousStepActionCreator = () => ({
+//   type: types.PROJECT_PREVIOUS_STEP
+//   });
 
 
 // //task action creators
@@ -160,5 +177,4 @@ export const updateDashboardActionCreator = () => {
 // export const deleteTaskActionCreator = (taskId) => ({
 //   type: types.DELETE_TASK,
 //   payload: taskId
-// });
-
+// }); */
