@@ -36,24 +36,24 @@ function Signup() {
       <Wrapper>
         <h1>Signup</h1>
         <form onSubmit={signup}>
-          <label>First Name</label>
+          <label>First Name: </label>
           <input
             onChange={(e) =>
               dispatch(firstNameInputActionCreator(e.target.value))
             }
           />
-          <label>Last Name</label>
+          <label>Last Name: </label>
           <input
             onChange={(e) =>
               dispatch(lastNameInputActionCreator(e.target.value))
             }
           />
-          <label>Email</label>
+          <label>Email: </label>
           <input
             type="email"
             onChange={(e) => dispatch(emailInputActionCreator(e.target.value))}
           />
-          <label>Password</label>
+          <label>Password: </label>
           <input
             type="password"
             onChange={(e) =>

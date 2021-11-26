@@ -6,6 +6,12 @@ import {
   passwordInputActionCreator,
   submitLoginActionCreator,
 } from "../actions/actions";
+import styled from "styled-components";
+
+const Wrapper = styled.section`
+  box-sizing: border-box;
+  text-align: center;
+`;
 
 function Login() {
   const dispatch = useDispatch();
@@ -24,19 +30,23 @@ function Login() {
 
   return (
     <div>
-      <h1>Login</h1>
-      <form onSubmit={submit}>
-        <label>Email</label>
-        <input
-          onChange={(e) => dispatch(emailInputActionCreator(e.target.value))}
-        />
-        <label>Password</label>
-        <input
-          onChange={(e) => dispatch(passwordInputActionCreator(e.target.value))}
-          type="password"
-        />
-        <button type="submit">Log in</button>
-      </form>
+      <Wrapper>
+        <h1>Login</h1>
+        <form onSubmit={submit}>
+          <label>Email: </label>
+          <input
+            onChange={(e) => dispatch(emailInputActionCreator(e.target.value))}
+          />
+          <label>Password: </label>
+          <input
+            onChange={(e) =>
+              dispatch(passwordInputActionCreator(e.target.value))
+            }
+            type="password"
+          />
+          <button type="submit">Log in</button>
+        </form>
+      </Wrapper>
     </div>
   );
 }
