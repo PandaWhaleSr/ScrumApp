@@ -8,17 +8,15 @@
  *
  * ************************************
  */
-import { combineReducers } from 'redux';
-import projectsReducer from './projectsReducer';
-import tasksReducer from './tasksReducer';
-import authReducer from './authReducer';
-
-
+import { combineReducers } from "redux";
+import projectsReducer from "./projectsReducer";
+import tasksReducer from "./tasksReducer";
+import authReducer from "./authReducer";
 
 const reducers = combineReducers({
-    projects: projectsReducer,
-    tasks: tasksReducer,
-    auth: authReducer
+  projects: projectsReducer,
+  tasks: tasksReducer,
+  auth: authReducer,
 });
 
 export default reducers;

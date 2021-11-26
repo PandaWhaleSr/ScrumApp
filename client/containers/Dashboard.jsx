@@ -1,45 +1,37 @@
-import React, {useEffect} from 'react';
-import NavBar from '.././components/NavBar.jsx';
-import {updateDashboardActionCreator} from '../actions/actions';
-import {useDispatch, useSelector} from 'react-redux';
-import ProjectCreator from '../components/ProjectCreator.jsx';
-import { useNavigate } from 'react-router';
+import React, { useEffect } from "react";
+import { updateDashboardActionCreator } from "../actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import NavBar from ".././components/NavBar.jsx";
+import ProjectCreator from "../components/ProjectCreator.jsx";
+import { useNavigate } from "react-router";
 
 function Dashboard() {
-    const dispatch = useDispatch();
-    const authState = useSelector(state => state.auth);
-    const projectState = useSelector(state => state.projects);
-    // console.log(authState)
+  const dispatch = useDispatch();
+  const authState = useSelector((state) => state.auth);
+  const projectState = useSelector((state) => state.projects);
 
-    //when dashboard loads, we want to make a get request to get all projects associated 
-    //with that user
-    useEffect(() => {
-        dispatch(updateDashboardActionCreator())
-    }, [projectState.projectsLoaded])
+  // console.log(projectState.projectList)
 
-    // console.log(projectState.projectList)
-   
-    const goToProj = () => {
-        useNavigate("/ProjectCreator")
-    }
+  const goToProj = () => {
+    useNavigate("/ProjectCreator");
+  };
 
-
-    return (
+  return (
     <div>
-        <button>Create Project</button>
-        <div>
-            {projectState.projectsLoaded === false && <p>Loading...</p>}
-            {projectState.projectsLoaded === true && projectState.projectList.length === 0 && <h1>No projects yet</h1> }
-            {projectState.projectsLoaded === true && projectState.projectList.length > 0 && <h1>Projects!</h1> }
+      <button>Create Project</button>
+      <div>
+        {projectState.projectsLoaded === false && <p>Loading...</p>}
+        {projectState.projectsLoaded === true &&
+          projectState.projectList.length === 0 && <h1>No projects yet</h1>}
+        {projectState.projectsLoaded === true &&
+          projectState.projectList.length > 0 && <h1>Projects!</h1>}
 
-             <button type = "submit" onSubmit = {() => goToProj}>projectCreator</button> 
-          
-            
-            
-         </div>
+        <button type="submit" onSubmit={() => goToProj}>
+          projectCreator
+        </button>
+      </div>
     </div>
-    )
-  
+  );
 }
 
-export default Dashboard
+export default Dashboard;
